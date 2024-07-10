@@ -11,7 +11,7 @@ from typing import cast
 
 from pendulum.utils._compat import resources
 
-import pendulum.locales.en_us as enus
+import pendulum.locales.en_us.locale as enus
 
 class Locale:
     """
