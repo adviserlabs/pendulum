@@ -11,6 +11,7 @@ from typing import cast
 
 from pendulum.utils._compat import resources
 
+import en_us as enus
 
 class Locale:
     """
@@ -34,17 +35,17 @@ class Locale:
             return cls._cache[locale]
 
         # Checking locale existence
-        actual_locale = locale
-        locale_path = cast(Path, resources.files(__package__).joinpath(actual_locale))
-        while not locale_path.exists():
-            if actual_locale == locale:
-                raise ValueError(f"Locale [{locale}] does not exist.")
+        # actual_locale = locale
+        # locale_path = cast(Path, resources.files(__package__).joinpath(actual_locale))
+        # while not locale_path.exists():
+        #     if actual_locale == locale:
+        #         raise ValueError(f"Locale [{locale}] does not exist.")
 
-            actual_locale = actual_locale.split("_")[0]
+        #     actual_locale = actual_locale.split("_")[0]
 
-        m = import_module(f"pendulum.locales.{actual_locale}.locale")
+        # m = import_module(f"pendulum.locales.{actual_locale}.locale")
 
-        cls._cache[locale] = cls(locale, m.locale)
+        cls._cache[locale] = cls(locale, enus.locale)
 
         return cls._cache[locale]
 
